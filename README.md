@@ -46,6 +46,33 @@ python qa.py . --fail-on error       # 오류가 있으면 종료코드 1 (CI/�
 | `--ignore 패턴` | 제외할 glob. 여러 번 지정 가능 |
 | `--fail-on` | 종료코드로 실패를 알림 |
 
+## 돌려본 것
+
+같은 저장소의 다른 프로젝트(3D 웹 데모)에 그대로 돌린 결과다.
+
+```
+tile-grid.html  [html]  오류 3  참고 2
+  오류     –  리소스를 못 불러옴 (HTTP 404): https://cdn.jsdelivr.net/gh/orioncactus/…/Pretendard-Black.woff2
+        → 경로 오타이거나 파일이 없는 것
+  참고    48  <input> 에 label/aria-label/placeholder 가 하나도 없음
+        │ <input id="gap">
+
+작업정리.md  [text]  참고 1
+  참고    43  TODO 주석이 남아 있음
+
+────────────────────────────────────────────────────────────────
+오류 15  경고 5  참고 12   합계 32건
+가장 잦은 규칙: runtime/bad-request×15, runtime/console-warning×4, a11y/blank-noopener×1
+```
+
+폰트 CDN 404 15건은 정적 분석으로는 안 잡힌다. 브라우저로 실제로 열어봤기 때문에 나온 것이다.
+
+리포트는 자립형 HTML 한 파일로 나온다. 심각도·규칙·메시지로 거르고, 깨끗한 파일은 접어둔다.
+
+![리포트](docs/report.png)
+
+![리포트 상세](docs/report-detail.png)
+
 ## 심각도
 
 | | 뜻 |
